@@ -6,7 +6,7 @@ class Container{
     }
     async save(object){
         const products = await this.getAll()
-        object.id = products[products.length - 1].id + 1
+        object.id = products.length === 0 ? 0 : object.id = products[products.length - 1].id + 1
         products.push(object)
         try {
             console.log(`El siguiente elemento sera guardado : \n${JSON.stringify(object)}`)

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Carga de Handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <!-- Carga de dato Dinamico -->
+    <span></span>
+    <script> 
+        // Declaramos los datos a procesar
+        const templateString =(`
+        <h1>Datos Personales</h1>
+        <ul>
+            <li>{{nombre}}</li>
+            <li>{{apellido}}</li>
+            <li>{{edad}}</li>
+            <li>{{email}}</li>
+            <li>{{telefono}}</li>
+        </ul>`)
+        const data = template({
+            nombre : 'La concha de tu madre',
+            apellido : 'Puto',
+            edad : 'Hijo de puta',
+            email : 'Negro de mierda',
+            telefono : '12312313'
+        })
+        // Procesamiento de datos
+        const template = Handlebars.compile(templateString) // Compilamos el templateString
+        const html = template(data) // Metemos en el template los datos
+        document.querySelector('span').innerHTML = html // Asignamos la plantilla generada dentro de <span>
+    </script>
+</body>
+</html>

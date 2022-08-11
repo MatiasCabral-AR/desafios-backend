@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head.ejs'); %>
+</head>
+<body class="container bg-light">
+    <header>
+        <%- include('../partials/header.ejs'); %> 
+    </header>
+    <main>
+        <div class="jumbotron bg-dark">
+            <h2 class="text-light">Variable</h2>
+            <p class="text-light">
+                <%= tagline %> 
+            </p>
+            <ul>
+                <% pets.forEach(pet => { %>
+                    <li>
+                        <strong class="text-light"><%= pet.name %> </strong>
+                        <p class="text-light">Representa a : <%= pet.org %> </p>
+                        <p class="text-light">Nacio en : <%= pet.birth %>  </p>
+                    </li>
+                <% }); %> 
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer.ejs'); %> 
+    </footer>
+</body>
+</html>

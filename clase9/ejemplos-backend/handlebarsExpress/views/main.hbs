@@ -1,0 +1,12 @@
+{{> lovedChamps }}
+<br>
+{{> hatedChamps }}
+<br>
+<h2>Lista de Campeones Sugeridos</h2>
+{{#if listExists}}
+    <ul>
+        {{#each suggestedChamps}}
+            <li class={{this.lane}}>{{this.name}}</li>
+        {{/each}}
+    </ul>
+{{/if}}
