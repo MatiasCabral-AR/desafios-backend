@@ -43,7 +43,7 @@ routerProductos.get('/:id', async (req, res)=> {
 // POST que recibe y agrega un producto con un id asignado
 
 routerProductos.post('/', async (req, res) => {
-    const product = req.body
+    let product = req.body
     if(product){
         product = await products.saveProduct(product)
         res.json({
@@ -74,7 +74,7 @@ routerProductos.delete('/:id', async (req, res) => {
 
 routerProductos.put('/:id', async (req, res) => {
     const result = products.save(req.body)
-    if(result){
+    if(result.length > 0){
         res.send(`
         El producto : ${JSON.stringify(result[1])}\n\n
          reemplazado por : ${JSON.stringify(result[0])}

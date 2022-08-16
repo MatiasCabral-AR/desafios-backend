@@ -64,5 +64,11 @@
     "name": "remera fiera",
     "price": 23453,
     "src": "arwfdgh"
+  },
+  {
+    "id": 12,
+    "name": "pantalon robado",
+    "price": 3453,
+    "src": "asdfsdfsd"
   }
 ]
