@@ -72,27 +72,27 @@
     "src": "asdfsdfsd"
   },
   {
-    "id": 534534534,
-    "name": "dfsdfsd",
-    "price": 3453456,
-    "src": "hdfhgdfgd"
-  },
-  {
-    "id": 534534535,
-    "name": "Buzo de la concha de tu madre",
-    "price": 4500,
+    "id": 13,
+    "name": "",
+    "price": 3500,
     "src": "otra-ruta"
   },
   {
-    "id": 13,
-    "name": "dsfsfsd",
-    "price": 23454234432,
-    "src": "sdfsdfdsfsd"
+    "id": 35,
+    "name": "",
+    "price": 6786,
+    "src": "asdfasd"
   },
   {
-    "id": 15,
-    "name": "Buzo de nati",
-    "price": 85000,
-    "src": "sljdkhflskd"
+    "id": 55,
+    "name": "algo",
+    "price": 6666,
+    "src": "66666"
+  },
+  {
+    "id": 45645,
+    "name": "aadasd",
+    "price": 7856756,
+    "src": "aaadfasdas"
   }
 ]
