@@ -5,10 +5,10 @@ class Container{
         this.route = route
     }
     async save(mensaje){
-        const mensajes = this.getAll()
+        const mensajes = await this.getAll()
         mensajes.push(mensaje)
         try {
-            await fs.writeFile(this.route, JSON.stringify(productos, null, 2))
+            await fs.writeFile(this.route, JSON.stringify(mensajes, null, 2))
             return console.log('Guardado exitoso')
         } catch (error) {
             console.error('Error de escritura')
@@ -26,3 +26,5 @@ class Container{
         }
     }
 }
+
+module.exports = Container;

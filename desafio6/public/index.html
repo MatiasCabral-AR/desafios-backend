@@ -18,14 +18,14 @@
     </header>
     <main>
         <section class="container-fluid d-flex messages h-50 border-light">
-            <form class="d-flex flex-column w-50" action="" method="post">
-                <input class="bg-dark text-light border-light m-1 rounded" type="text" placeholder="Ingrese su nombre imbecil" name="name" id="name" required>
+            <form class="d-flex flex-column w-50" autocomplete="off" id="messageForm">
+                <input type="text" autocomplete="false" name="hidden" style="display:none">
                 <input class="bg-dark text-light border-light m-1 rounded" type="email" name="email" id="email" placeholder="Ingrese su mail" required>
                 <input class="bg-dark text-light border-light m-1 rounded" type="text" placeholder="Su mensaje ..." name="text" id="text" required>
-                <button type="submit" class="btn btn-outline-light">Enviar</button>
+                <button class="btn btn-outline-light">Enviar</button>
             </form>
             <aside class="messages border d-flex flex-column w-50">
-                <div class="message d-flex flex-column">
+                <div class="d-flex flex-column" id="messageDisplay">
                 </div>
             </aside>
         </section>
