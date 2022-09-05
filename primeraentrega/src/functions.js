@@ -10,16 +10,16 @@ function checkLength(arr){
 }
 
 function checkId(product, arr){
-    arr.forEach(element => {
-        if(element.id == product.id){
+    arr.forEach(element => { // Por cada elemento del array
+        if(element.id == product.id){ // Si existe un elemento con el mismo id del producto nuevo
             console.warn('El id del elemento ya existe, se le asignara uno nuevo.')
-            return newId(product, arr)
+            return newId(arr, product) // Ejecutamos newId
         } 
     });
         return product.id
 }
 function newId(arr, product=false){
-    if(product){
+    if(product){ // Si el producto llega ...
         arr.sort((a, b) => {return a - b}) // Ordenamos de forma ascendente segun el id
         product.id = parseInt(arr[arr.length - 1].id) + 1 // Tomamos el id mas grande le sumamos 1 y lo asignamos al producto
         return product.id
