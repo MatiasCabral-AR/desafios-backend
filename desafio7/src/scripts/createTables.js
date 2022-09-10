@@ -6,14 +6,16 @@ import { productsArray, messagesArray } from './importTables.js';
 
 try {
     const mariaDbClient = knex(config.mariaDb)
-    mariaDbClient.schema.createTable('products', table => {
+    await mariaDbClient.schema.dropTableIfExists('products');
+    await mariaDbClient.schema.createTable('products', table => {
         table.increments('id')
         table.string('name')
         table.integer('price')
         table.string('src')
         console.log('Tabla vacia creada con exito')
     })
-    mariaDbClient('products').insert(productsArray)
+    console.log(productsArray)
+    await mariaDbClient('products').insert(productsArray)
         .then(() => console.log('Elementos insertados en la tabla'))
         .catch((err) => {console.log(err); throw new Error(err)})
         .finally(() => { mariaDbClient.destroy(); console.log('Conexion Finalizada')})

@@ -4,11 +4,14 @@ import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
 import config from './scripts/config.js';
-import handlebars from 'express-handlebars'
-import ContenedorSQL from '../resources/js/ContainerSQL';
+import * as handlebars from 'express-handlebars'
+import ContenedorSQL from '../resources/js/ContainerSQL.js';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 // Instances
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
@@ -18,9 +21,16 @@ const hbs = handlebars.create({
     layoutsDir: __dirname + "/public/views/layout",//Ruta a plantilla principal
     partialsDir: __dirname + "/public/views/partials/" //Ruta a plantillas parciales
   })
+const productos = new ContenedorSQL(config.mariaDb, 'products', './resources/txt/products.txt')
+//const mensajes = new ContenedorSQL(config.sqlite3, 'mensajes')
 
-const productos = new ContenedorSQL(config.mariaDb, 'productos')
-const mensajes = new ContenedorSQL(config.sqlite3, 'mensajes')
+// APP use and set
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');//Registra el motor de plantillas
+app.set('views', './public/views');//Especifica el directorio de vistas
 
 // Get, Post and Socket 
 
@@ -29,7 +39,7 @@ app.get('/', (req, res) => {
 })
 io.on('connection', async socket => {
     socket.emit('update_products', await productos.getAll());
-    socket.emit('update_messages', await mensajes.getAll());
+    //socket.emit('update_messages', await mensajes.getAll());
     socket.on('new_product', async product => {
         await productos.saveProduct(product)
         io.emit('update_products', await productos.getAll())
@@ -39,15 +49,6 @@ io.on('connection', async socket => {
         io.emit('update_messages', await mensajes.getAll())
     })
 })
-
-// APP use and set
-
-app.use(express.static('public'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');//Registra el motor de plantillas
-app.set('views', './public/views');//Especifica el directorio de vistas
 
 // Port settings
 const PORT = 8080;

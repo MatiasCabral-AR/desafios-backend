@@ -52,5 +52,29 @@
     "name": "Bombachita de Nena",
     "price": 1800,
     "src": "/resources/img/product-images/bombachita1.jpg"
+  },
+  {
+    "id": 34,
+    "name": "asdas",
+    "price": 43,
+    "src": "sdgsd"
+  },
+  {
+    "id": 4356,
+    "name": "asfdas",
+    "price": 34563,
+    "src": "asdas"
+  },
+  {
+    "id": 34534,
+    "name": "asdas",
+    "price": 346534,
+    "src": "asdfasf"
+  },
+  {
+    "id": 2342,
+    "name": "gad",
+    "price": 234,
+    "src": "adgsa"
   }
 ]
