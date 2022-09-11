@@ -14,6 +14,7 @@ class ContenedorSQL {
     async getById(id) {
         try {
             const product = await this.knex(this.table).select('*').where('id', id)
+            this.disconnect()
             return product
         } catch (error) {
             return null
@@ -23,6 +24,7 @@ class ContenedorSQL {
     async getAll() {
         try {
             const products = await this.knex(this.table).select('*')
+            this.disconnect()
             return products
         } catch (error) {
             console.log('Cannot get products')
@@ -39,10 +41,11 @@ class ContenedorSQL {
         try {
             await this.knex(this.table).insert(object)
             .then(() => console.log(`${JSON.stringify(object)} will be insterted.`))
-            .catch(error => {console.log(error); throw err})
+            .catch(error => {console.log(error); throw error})
             .finally(async () => {
                 products.push(object)
-                await fs.writeFile(this.route, JSON.stringify(products, null, 2)); 
+                await fs.writeFile(this.route, JSON.stringify(products, null, 2));
+                this.disconnect() 
             })
         } catch (error) {
             console.log(error)
@@ -51,13 +54,19 @@ class ContenedorSQL {
 
     async saveMessage(mensaje){
         const mensajes = await this.getAll()
-        mensajes.push(mensaje)
         try {
-            await fs.writeFile(this.route, JSON.stringify(mensajes, null, 2))
-            return console.log('Guardado exitoso')
+            await this.knex(this.table).insert(mensaje)
+                .then(() => console.log(`${JSON.stringify(mensaje)} will be posted`))
+                .catch( error => {console.log(error); throw error})
+                .finally(async () => {
+                    mensajes.push(mensaje)
+                    await fs.writeFile(this.route, JSON.stringify(mensajes, null, 2));
+                    this.disconnect() 
+                })
+            console.log('Guardado exitoso')
         } catch (error) {
             console.error('Error de escritura')
-            return console.error(error)
+            console.error(error)
         }
     }
 

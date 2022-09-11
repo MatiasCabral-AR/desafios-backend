@@ -29,8 +29,8 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');//Registra el motor de plantillas
-app.set('views', './public/views');//Especifica el directorio de vistas
+app.set('view engine', 'hbs'); //Registra el motor de plantillas
+app.set('views', './public/views'); //Especifica el directorio de vistas
 
 // Get, Post and Socket 
 
@@ -43,16 +43,14 @@ io.on('connection', async socket => {
     socket.emit('update_products', products);
     socket.emit('update_messages', messages);
     socket.on('new_product', async product => {
+        product = await productos.saveProduct(product)
         products.push(product)
-        await productos.saveProduct(product)
         io.sockets.emit('update_products', products)
-        //await productos.disconnect()
     })
     socket.on('new_message', async message => {
         messages.push(message)
         await mensajes.saveMessage(message)
         io.sockets.emit('update_messages', messages)
-        //await messages.disconnect()
     })
 })
 
