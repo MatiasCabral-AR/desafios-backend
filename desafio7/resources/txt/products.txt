@@ -54,27 +54,21 @@
     "src": "/resources/img/product-images/bombachita1.jpg"
   },
   {
-    "id": 34,
-    "name": "asdas",
-    "price": 43,
-    "src": "sdgsd"
+    "id": 1234,
+    "name": "daasd",
+    "price": 32442,
+    "src": "dasd"
   },
   {
-    "id": 4356,
-    "name": "asfdas",
-    "price": 34563,
-    "src": "asdas"
+    "id": 2423,
+    "name": "adaads",
+    "price": 456456,
+    "src": "afdfaaf"
   },
   {
-    "id": 34534,
-    "name": "asdas",
-    "price": 346534,
-    "src": "asdfasf"
-  },
-  {
-    "id": 2342,
-    "name": "gad",
-    "price": 234,
-    "src": "adgsa"
+    "id": 5675,
+    "name": "artjtyj",
+    "price": 87568567,
+    "src": "fgjjfgjgf"
   }
 ]

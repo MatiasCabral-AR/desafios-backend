@@ -22,7 +22,7 @@ const hbs = handlebars.create({
     partialsDir: __dirname + "/public/views/partials/" //Ruta a plantillas parciales
   })
 const productos = new ContenedorSQL(config.mariaDb, 'products', './resources/txt/products.txt')
-//const mensajes = new ContenedorSQL(config.sqlite3, 'mensajes')
+const mensajes = new ContenedorSQL(config.sqlite3, 'messages', './resources/txt/messages.txt')
 
 // APP use and set
 app.use(express.static('public'));
@@ -38,15 +38,21 @@ app.get('/', (req, res) => {
     res.render('index', {})
 })
 io.on('connection', async socket => {
-    socket.emit('update_products', await productos.getAll());
-    //socket.emit('update_messages', await mensajes.getAll());
+    const products = await productos.getAll();
+    const messages = await mensajes.getAll();
+    socket.emit('update_products', products);
+    socket.emit('update_messages', messages);
     socket.on('new_product', async product => {
+        products.push(product)
         await productos.saveProduct(product)
-        io.emit('update_products', await productos.getAll())
+        io.sockets.emit('update_products', products)
+        //await productos.disconnect()
     })
     socket.on('new_message', async message => {
-        await mensajes.save(message)
-        io.emit('update_messages', await mensajes.getAll())
+        messages.push(message)
+        await mensajes.saveMessage(message)
+        io.sockets.emit('update_messages', messages)
+        //await messages.disconnect()
     })
 })
 

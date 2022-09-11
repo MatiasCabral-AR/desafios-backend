@@ -1,37 +1,7 @@
 [
   {
-    "date": "2022-8-27",
-    "mail": "alsjdhalsd@lijdfalskda",
-    "text": "alkjshdajklshdkjas"
-  },
-  {
-    "date": "2022-8-27",
-    "mail": "sadasdasd@kljahsdjka",
-    "text": "hkgasdfkljhsgdfksa"
-  },
-  {
-    "date": "2022-8-27",
-    "mail": "sadasdasd@kljahsdjka",
-    "text": "hkgasdfkljhsgdfksa"
-  },
-  {
-    "date": "2022-8-2722:14",
-    "mail": "skludhflskd@lksajdhfkasd",
-    "text": "laksuhdgflasd"
-  },
-  {
-    "date": "2022-8-27  22:19",
-    "mail": "lakhjsgdlaskda@kjashdlkjas",
-    "text": "kauysgdkuaysgdkauyighdaiysghdaishgdliasud"
-  },
-  {
-    "date": "2022-8-27  22:25",
-    "mail": "matias@matias.com",
-    "text": "Hola"
-  },
-  {
-    "date": "2022-8-27  22:29",
-    "mail": "mati@mati",
-    "text": "Flor puta"
+    "date": "2022-9-10  22:20",
+    "mail": "akjysgfdasda@lkasjhdfal",
+    "text": "ñiuskdgflskdf"
   }
 ]

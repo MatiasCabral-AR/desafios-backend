@@ -49,24 +49,24 @@ class ContenedorSQL {
         }
     }
 
-    async actualizar(elem, id) {
+    async saveMessage(mensaje){
+        const mensajes = await this.getAll()
+        mensajes.push(mensaje)
         try {
-            await this.knex(this.table)
+            await fs.writeFile(this.route, JSON.stringify(mensajes, null, 2))
+            return console.log('Guardado exitoso')
         } catch (error) {
-            
+            console.error('Error de escritura')
+            return console.error(error)
         }
     }
 
-    async borrar(id) {
-        
-    }
-
-    async borrarAll() {
-        
-    }
-
-    async desconectar() {
-    
+    async disconnect() {
+        try {
+            await this.knex.destroy()
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

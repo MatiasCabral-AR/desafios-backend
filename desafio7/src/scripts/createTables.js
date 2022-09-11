@@ -16,9 +16,9 @@ try {
     })
     console.log(productsArray)
     await mariaDbClient('products').insert(productsArray)
-        .then(() => console.log('Elementos insertados en la tabla'))
+        .then(() => console.log('Productos insertados en la tabla'))
         .catch((err) => {console.log(err); throw new Error(err)})
-        .finally(() => { mariaDbClient.destroy(); console.log('Conexion Finalizada')})
+        .finally(() => { mariaDbClient.destroy(); console.log('Conexion MySQL Finalizada')})
     console.log('Tabla productos en mariaDb creada con éxito')
 } catch (error) {
     console.log('Error al crear tabla productos en mariaDb')
@@ -28,11 +28,19 @@ try {
 //------------------------------------------
 // mensajes en SQLite3
 try {
-    //const sqliteClient = knex(config.sqlite3)
-
-    //Implementar creación de tabla
-
+    const sqliteClient = knex(config.sqlite3)
+    await sqliteClient.schema.dropTableIfExists('messages')
+    await sqliteClient.schema.createTable('messages', table => {
+        table.string('date');
+        table.string('mail').notNullable();
+        table.string('text');
+    });
+    await sqliteClient('messages').insert(messagesArray)
+        .then(() => console.log('Mensajes insertados en la tabla'))
+        .catch((err) => {console.log(err); throw new Error(err)})
+        .finally(() => {sqliteClient.destroy(); console.log('Conexion SQLite finalizada')})
     console.log('tabla mensajes en sqlite3 creada con éxito')
 } catch (error) {
     console.log('error al crear tabla mensajes en sqlite3')
+    console.log(error)
 }
