@@ -4,7 +4,7 @@ show databases    // Chequeo de bases de datos creadas y disponibles
 ------------------------------------------------------------
                       MENSAJES
 
-use mensajes    // Creacion y acceso a base de datos "mensajes"
+use mensajes    // Creacion y acceso a coleccion "mensajes"
 db.dropDatabase()    // Borramos todo lo que tiene dentro
 db.mensajes.insertMany([
     {
@@ -62,7 +62,7 @@ db.mensajes.insertMany([
 ------------------------------------------------------------------
                       PRODUCTOS
 
-use productos    // Creacion y acceso a base de datos "productos"
+use productos    // Creacion y acceso a coleccion "productos"
 db.dropDatabase()    // Borramos todo lo que tiene dentro
 db.productos.insertMany([
     {

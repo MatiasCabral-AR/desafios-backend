@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "cant": 0,
     "category": "Buzo",
     "description": [
@@ -20,7 +19,6 @@
     "stock": 50
   },
   {
-    "id": 2,
     "cant": 0,
     "category": "Buzo",
     "description": [
@@ -40,7 +38,6 @@
     "stock": 50
   },
   {
-    "id": 3,
     "cant": 0,
     "category": "Buzo",
     "description": [
@@ -60,7 +57,6 @@
     "stock": 50
   },
   {
-    "id": 4,
     "cant": 0,
     "category": "Buzo",
     "description": [
@@ -80,7 +76,6 @@
     "stock": 50
   },
   {
-    "id": 5,
     "cant": 0,
     "category": "Buzo",
     "description": [
@@ -100,7 +95,6 @@
     "stock": 50
   },
   {
-    "id": 6,
     "cant": 0,
     "category": "Buzo",
     "description": [
@@ -120,7 +114,6 @@
     "stock": 50
   },
   {
-    "id": 7,
     "cant": 0,
     "category": "Remera",
     "description": [
@@ -140,7 +133,6 @@
     "stock": 50
   },
   {
-    "id": 8,
     "cant": 0,
     "category": "Remera",
     "description": [
@@ -160,7 +152,6 @@
     "stock": 50
   },
   {
-    "id": 9,
     "cant": 0,
     "category": "Remera",
     "description": [
@@ -180,7 +171,6 @@
     "stock": 50
   },
   {
-    "id": 10,
     "cant": 0,
     "category": "Remera",
     "description": [
@@ -200,7 +190,6 @@
     "stock": 50
   },
   {
-    "id": 11,
     "cant": 0,
     "category": "Remera",
     "description": [
@@ -220,7 +209,6 @@
     "stock": 50
   },
   {
-    "id": 12,
     "cant": 0,
     "category": "Remera",
     "description": [
@@ -240,7 +228,6 @@
     "stock": 50
   },
   {
-    "id": 13,
     "cant": 0,
     "category": "Pantalon",
     "description": [
@@ -260,7 +247,6 @@
     "stock": 50
   },
   {
-    "id": 14,
     "cant": 0,
     "category": "Campera",
     "description": [
@@ -280,7 +266,6 @@
     "stock": 50
   },
   {
-    "id": 15,
     "cant": 0,
     "category": "Campera",
     "description": [
@@ -300,7 +285,6 @@
     "stock": 50
   },
   {
-    "id": 16,
     "cant": 0,
     "category": "Campera",
     "description": [
@@ -320,7 +304,6 @@
     "stock": 50
   },
   {
-    "id": 17,
     "cant": 0,
     "category": "Campera",
     "description": [
@@ -340,7 +323,6 @@
     "stock": 50
   },
   {
-    "id": 18,
     "cant": 0,
     "category": "Campera",
     "description": [
@@ -360,7 +342,6 @@
     "stock": 50
   },
   {
-    "id": 19,
     "cant": 0,
     "category": "Campera",
     "description": [
@@ -380,7 +361,6 @@
     "stock": 50
   },
   {
-    "id": 20,
     "cant": 0,
     "category": "Pantalon",
     "description": [
@@ -400,7 +380,6 @@
     "stock": 50
   },
   {
-    "id": 21,
     "cant": 0,
     "category": "Pantalon",
     "description": [
@@ -420,7 +399,6 @@
     "stock": 50
   },
   {
-    "id": 22,
     "cant": 0,
     "category": "Pantalon",
     "description": [
@@ -440,7 +418,6 @@
     "stock": 50
   },
   {
-    "id": 23,
     "cant": 0,
     "category": "Pantalon",
     "description": [
@@ -460,7 +437,6 @@
     "stock": 50
   },
   {
-    "id": 24,
     "cant": 0,
     "category": "Pantalon",
     "description": [

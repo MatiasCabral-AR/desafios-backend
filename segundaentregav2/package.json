@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.1",
+    "firebase-admin": "^11.0.1",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.2"
+  },
+  "scripts": {
+    "mongo": "set DB='mongo' && node server.js"
+  },
+  "name": "segundaentregav2",
+  "version": "1.0.0",
+  "main": "main.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
