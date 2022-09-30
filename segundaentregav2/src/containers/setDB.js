@@ -1,13 +1,15 @@
-import FirebaseCarts from "./firebase/FirebaseCarts";
-import FirebaseProducts from "./firebase/FirebaseProducts";
-import MongoContainer from "./mongo/MongoContainer";
+import FirebaseCarts from "./firebase/FirebaseCarts.js";
+import FirebaseProducts from "./firebase/FirebaseProducts.js";
+import MongoContainer from "./mongo/MongoContainer.js";
 
 export default function setDB(){
-    switch (process.env.DB) {
+    const option = process.env.DB
+    switch (option) {
         case 'mongo':
-            return {products : FirebaseProducts, carts : FirebaseCarts}
-        case 'firebase':
+            console.log('INSIDE CASE MONGO')
             return MongoContainer
+        case 'firebase':
+            return {products : new FirebaseProducts, carts : new FirebaseCarts} 
         default:
             return null
     }

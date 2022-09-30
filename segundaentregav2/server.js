@@ -1,19 +1,13 @@
 import express from 'express';
 import { soloAdmins } from './src/utilities/adminMiddleware.js';
-// Server instance and settings
+// Server instance
 const {Router} = express;
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
-app.use('/api/productos', productosRouter)
-app.use('/api/carritos', carritosRouter)
-export default app
 // Container instance
 import setDB from './src/containers/setDB.js';
-const Contenedor = setDB()
-const productosApi = new Contenedor('dbProductos.json')
-const carritosApi = new Contenedor('dbCarritos.json')
+const contenedor = setDB()
+const productosApi = contenedor.products
+const carritosApi = contenedor.carts
 // Products Router settings
 const productosRouter = new Router()
 productosRouter.get('/', async (req, res)=> { // Get all
@@ -29,18 +23,23 @@ productosRouter.get('/:id', async (req, res)=> { // Get by Id
 })
 productosRouter.post('/', soloAdmins, async (req, res)=> { // Post new product
     let product = req.body
-    console.log(product)
     if(product){
-        product = await productosApi.saveProduct(product)
-        res.json({
-            product_new : product
-        })
+        try {
+            product = await productosApi.saveProduct(product)
+            console.log(`put ${JSON.stringify(product)}`)
+            res.json({
+                product_new : product,
+                product_id : product.id
+            })
+        } catch (error) {
+            res.status(400).send(`${error}`)
+        }
     }
-    else{res.status(404).send('Products not found')}
+    else{res.status(404).send('Product not found')}
 })
 productosRouter.put('/:id', soloAdmins, async (req, res)=> { // Put(Update) product
     let product = await productosApi.getById(req.params.id)
-    if(req.body.id === product.id){
+    if(product && req.body.id === product.id){
         try {
             productosApi.updateProduct(req.body)
             res.json({
@@ -48,7 +47,7 @@ productosRouter.put('/:id', soloAdmins, async (req, res)=> { // Put(Update) prod
                 product_new : req.body
             })
         } catch (error) {
-            res.status(error).send('ID not found')
+            res.status(error).send('Invalid Product')
         }
     }
     else{res.status(404).send('ID not found')}   
@@ -64,8 +63,18 @@ productosRouter.delete('/:id', soloAdmins, async (req, res)=> { // Delete by Id
 })
 // Cart Router Settings
 const carritosRouter = new Router()
+carritosRouter.get('/', async (req, res) => {
+    let carts = await carritosApi.getAll()
+    if(carts){
+        res.json(carts)
+    }
+    else{res.status(400).send('Error on get')}
+})
 carritosRouter.post('/', async (req, res)=> {
-    let cart = await carritosApi.newCart();
+    let cart = Object.keys(req.body).length === 0 ? [] : req.body
+    console.log(cart)
+    let response = await carritosApi.saveCart(cart)
+    console.log(response)
     res.json({new_cart : cart})
 })
 carritosRouter.delete('/:id', async (req, res)=> {
@@ -107,3 +116,10 @@ carritosRouter.delete('/:id/productos/:id_prod', async (req, res)=> {
             res.status(404).send('Product ID not found') :
                 res.status(404).send('Cart ID not found');
 })
+// Server settings
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
+app.use('/api/productos', productosRouter)
+app.use('/api/carritos', carritosRouter)
+export default app

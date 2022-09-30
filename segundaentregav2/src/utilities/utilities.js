@@ -26,3 +26,71 @@ export function newId(arr, product=false){
     }
     return parseInt(arr[arr.length - 1].id) + 1;
 }
+export function formatDocs(docs, option){
+    let formattedDocs = docs.map((doc) => (
+        formatDoc(doc, option)
+    ))
+    return formattedDocs
+
+}
+
+export function formatDoc(doc, option){
+    console.log(option)
+    try {
+        if(option === 'products'){
+            return {
+                id : doc.id,
+                cant : doc.data().cant,
+                category : doc.data().category,
+                description : doc.data().description,
+                discount : doc.data().discount,
+                name : doc.data().name,
+                price : doc.data().price,
+                src1 : doc.data().src1,
+                src2 : doc.data().src2,
+                src3 : doc.data().src3,
+                src4 : doc.data().src4,
+                stock : doc.data().stock
+            }
+        }
+        if(option === 'carts'){
+            return {
+                id : doc.id,
+                products : doc.data().products
+            }
+        }
+        else{throw new Error}
+    } catch (error) {
+        return null
+    }
+}
+
+export function checkProduct(product){
+    product = parseProduct(product)
+    console.log(Object.values(product).every(value => {
+        value !== undefined ? true : false
+    }))
+    // Check if every object property 
+    return Object.values(product).every(value => {
+        if(value == undefined){
+            return false
+          }
+          return true
+    })
+}
+
+export function parseProduct(doc){
+    return {
+        cant : doc.cant,
+        category : doc.category,
+        description : doc.description,
+        discount : doc.discount,
+        name : doc.name,
+        price : doc.price,
+        src1 : doc.src1,
+        src2 : doc.src2,
+        src3 : doc.src3,
+        src4 : doc.src4,
+        stock : doc.stock
+    }
+}
