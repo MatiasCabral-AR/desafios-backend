@@ -17,7 +17,8 @@ class FirebaseCarts extends FirebaseContainer{
     }
     async addToCart(cartId, product){
         let doc = this.collection.doc(`${cartId}`)
-        doc.data().products.push(product)
+        let response = await doc.set(doc.data().products.push(product))
+        return response
     }
     async deleteCartProduct(cartId, productId){
 
