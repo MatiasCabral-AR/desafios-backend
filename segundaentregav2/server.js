@@ -8,6 +8,9 @@ import setDB from './src/containers/setDB.js';
 const contenedor = setDB()
 const productosApi = contenedor.products
 const carritosApi = contenedor.carts
+if (!(carritosApi && productosApi)){
+    throw new Error("No api's created")
+}
 // Products Router settings
 const productosRouter = new Router()
 productosRouter.get('/', async (req, res)=> { // Get all
@@ -26,7 +29,6 @@ productosRouter.post('/', soloAdmins, async (req, res)=> { // Post new product
     if(product){
         try {
             product = await productosApi.saveProduct(product)
-            console.log(`put ${JSON.stringify(product)}`)
             res.json({
                 product_new : product,
                 product_id : product.id

@@ -12,7 +12,7 @@ export default {
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zw6e4%40techwearclubar.iam.gserviceaccount.com"
     },
     mongodb: {
-        connection: 'mongodb://localhost/ecommerce',
+        connection: `mongodb+srv://admin:${process.env.PWD}@techwearclubar.xtw4azf.mongodb.net/?retryWrites=true&w=majority`,
         options: {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -20,4 +20,5 @@ export default {
             serverSelectionTimeoutMS: 5000,
         }
     }
+
 }

@@ -7,7 +7,7 @@
     "mongoose": "^6.6.2"
   },
   "scripts": {
-    "mongo": "set DB=mongo&&node main.js",
+    "mongo": "set DB=mongo&&set PWD=aDbTPS0w5m6p8ybi&&node main.js",
     "firebase" : "set DB=firebase&&node main.js"
   },
   "name": "segundaentregav2",
