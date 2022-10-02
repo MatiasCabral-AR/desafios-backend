@@ -43,10 +43,11 @@ productosRouter.put('/:id', soloAdmins, async (req, res)=> { // Put(Update) prod
     let product = await productosApi.getById(req.params.id)
     if(product && req.body.id === product.id){
         try {
-            productosApi.updateProduct(req.body)
+            let response = productosApi.updateProduct(req.body, req.params.id)
             res.json({
                 product_old : product,
-                product_new : req.body
+                product_new : req.body,
+                finished : response
             })
         } catch (error) {
             res.status(error).send('Invalid Product')
@@ -72,12 +73,14 @@ carritosRouter.get('/', async (req, res) => {
     }
     else{res.status(400).send('Error on get')}
 })
+carritosRouter.get('/:id', async (req, res) => {
+    let cart = await carritosApi.getById(req.params.id)
+    res.json(cart)
+})
 carritosRouter.post('/', async (req, res)=> {
     let cart = Object.keys(req.body).length === 0 ? [] : req.body
-    console.log(cart)
     let response = await carritosApi.saveCart(cart)
-    console.log(response)
-    res.json({new_cart : cart})
+    res.json({new_cart : cart, response : response})
 })
 carritosRouter.delete('/:id', async (req, res)=> {
     let id = req.params.id
@@ -113,7 +116,7 @@ carritosRouter.post('/:id/productos', async (req, res)=> {
 carritosRouter.delete('/:id/productos/:id_prod', async (req, res)=> {
     let cart = await carritosApi.getById(req.params.id);
     let product = await productosApi.getById(req.params.id_prod);
-    cart ? product ? cart.products.some(element => element.id === product.id) ? (await carritosApi.updateCart({...cart, "products" : cart.products.filter(element => element.id != product.id)}), res.json({deleted_product : product})) : 
+    cart ? product ? cart.products.some(element => element.id === product.id) ? (await carritosApi.deleteCartProduct(cart, product), res.json({deleted_product : product})) : 
         res.status(404).send('Product is not in cart') :
             res.status(404).send('Product ID not found') :
                 res.status(404).send('Cart ID not found');

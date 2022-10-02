@@ -35,7 +35,6 @@ export function formatDocs(docs, option){
 }
 
 export function formatDoc(doc, option){
-    console.log(option)
     try {
         if(option === 'products'){
             return {
@@ -67,9 +66,6 @@ export function formatDoc(doc, option){
 
 export function checkProduct(product){
     product = parseProduct(product)
-    console.log(Object.values(product).every(value => {
-        value !== undefined ? true : false
-    }))
     // Check if every object property 
     return Object.values(product).every(value => {
         if(value == undefined){

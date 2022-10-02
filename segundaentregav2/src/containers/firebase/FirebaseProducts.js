@@ -4,6 +4,7 @@ import { checkProduct } from "../../utilities/utilities.js";
 class FirebaseProducts extends FirebaseContainer{
     constructor(){
         super('products')
+        this.collectionName ='products'
     }
     async saveProduct(product){
         if(product.id){
@@ -17,15 +18,13 @@ class FirebaseProducts extends FirebaseContainer{
         
         throw new Error('Invalid Product')
     }
-    async updateProduct(product){
-        let doc = this.collection.doc(`${product.id}`)
-        let formatted = checkProduct(product)
-        if(formatted){
+    async updateProduct(product, productId){
+        let doc = this.collection.doc(`${productId}`)
+        if(product){
             await doc.update(product)
             return
         }
         throw new Error(400)
     }
-
 }
 export default FirebaseProducts

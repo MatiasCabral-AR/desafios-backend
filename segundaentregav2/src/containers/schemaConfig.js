@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const productModelName = 'product';
+const productModelName = "products";
 
 const productSchema = new mongoose.Schema({
     cant : {type : String, required : true},
@@ -16,11 +16,10 @@ const productSchema = new mongoose.Schema({
     stock : {type : Number, required : true}
 })
 
-const cartModelName = 'cart'
+const cartModelName = "carts"
 
 const cartSchema = new mongoose.Schema({
-    products : [{type : mongoose.Schema.Types.ObjectId, ref : 'product'}],
-    timestamp : {type : String, required : true}
+    products : [{type : Object, required : true}]
 })
 
 export {productModelName, productSchema, cartModelName, cartSchema}

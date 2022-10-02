@@ -12,7 +12,7 @@ class FirebaseCarts extends FirebaseContainer{
     }
     async updateCart(cart){
         let doc = this.collection.doc(`${cart.id}`)
-        let response = await doc.set(cart)
+        let response = await doc.update(cart)
         return response
     }
     async addToCart(cartId, product){
@@ -20,10 +20,11 @@ class FirebaseCarts extends FirebaseContainer{
         let response = await doc.set(doc.data().products.push(product))
         return response
     }
-    async deleteCartProduct(cartId, productId){
-
+    async deleteCartProduct(cart, product){
+        let index = cart.products.map(element => element.id).indexOf(product.id)
+        cart.products.splice(index, 1)
+        let response = await this.updateCart(cart)
+        return response
     }
-
 }
-
 export default FirebaseCarts

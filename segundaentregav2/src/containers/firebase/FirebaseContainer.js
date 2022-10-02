@@ -6,10 +6,8 @@ admin.initializeApp({
     credential : admin.credential.cert(config.firebase)
 });
 const db = admin.firestore();
-
 class FirebaseContainer{
     constructor(collectionName){
-        this.name = String(collectionName),
         this.collection = db.collection(collectionName)
     }
     async getAll(){
@@ -19,13 +17,12 @@ class FirebaseContainer{
     async getById(id){
         let doc = this.collection.doc(`${id}`)
         let item = await doc.get()
-        return formatDoc(item)
+        return formatDoc(item, this.collectionName)
     }
     async deleteById(id){
         let doc = this.collection.doc(`${id}`)
-        await doc.delete()
+        let item = await doc.delete()
+        return item
     }
-
 }
-
 export default FirebaseContainer

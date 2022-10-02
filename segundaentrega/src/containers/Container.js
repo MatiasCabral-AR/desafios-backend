@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { productModelName } from '../../../segundaentregav2/src/containers/schemaConfig';
 import { checkLength } from '../utilities/utilities';
 
 export default class Container{
@@ -32,3 +33,7 @@ export default class Container{
         }
     }
 }
+
+let product = '2btrmJwl'
+let cart = 'AJ72PlPB1qDX8nEicjcb'
+let fun = (await carritosApi.updateCart({...cart, "products" : cart.products.filter(element => element.id != product.id)}))

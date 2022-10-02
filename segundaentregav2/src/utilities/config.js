@@ -12,12 +12,10 @@ export default {
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zw6e4%40techwearclubar.iam.gserviceaccount.com"
     },
     mongodb: {
-        connection: `mongodb+srv://admin:${process.env.PWD}@techwearclubar.xtw4azf.mongodb.net/?retryWrites=true&w=majority`,
+        connection: "mongodb+srv://admin:D4Z3hFdGnvWTasOm@techwearclubar.xtw4azf.mongodb.net/techwearclubAR?retryWrites=true&w=majority",
         options: {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            serverSelectionTimeoutMS: 5000,
+            useUnifiedTopology: true
         }
     }
 
