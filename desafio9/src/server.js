@@ -3,7 +3,6 @@
 import express from 'express';
 import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
-import config from './scripts/config.js';
 import * as handlebars from 'express-handlebars'
 import FakerContainer from './container/FakerProducts/FakerContainer.js';
 import FSContainer from './container/FSContainer/FSContainer.js';
