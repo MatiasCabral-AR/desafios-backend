@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { checkProduct } from '../../utilities/utilities.js';
 import { productModelName, productSchema } from '../schemaConfig.js';
 import MongoContainer from './MongoContainer.js';

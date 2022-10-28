@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 // Products 
 const Container = require('../../../api/productos')
 const products = new Container('../../resources/products.txt')
+
 // GET and POST
 
 app.get('/', (req, res) => {

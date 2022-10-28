@@ -18,7 +18,7 @@ const io = new IOServer(httpServer)
 const hbs = handlebars.create({
     extname: ".hbs",
     defaultLayout: "index.hbs",
-    layoutsDir: __dirname + "/public/views/layout",//Ruta a plantilla principal
+    layoutsDir: __dirname + "/public/views",//Ruta a plantilla principal
     partialsDir: __dirname + "/public/views/partials/" //Ruta a plantillas parciales
   })
 const productos = new FakerContainer()
