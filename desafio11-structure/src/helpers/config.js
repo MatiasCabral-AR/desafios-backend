@@ -1,4 +1,4 @@
-const EXP_TIME = 20000 ;
+const EXP_TIME = 200000 ;
 const DATABASE_URL = 'mongodb+srv://admin:D4Z3hFdGnvWTasOm@techwearclubar.xtw4azf.mongodb.net/sessions?retryWrites=true&w=majority';
 const MONGO = {
     connection: "mongodb+srv://admin:D4Z3hFdGnvWTasOm@techwearclubar.xtw4azf.mongodb.net/sessions?retryWrites=true&w=majority",

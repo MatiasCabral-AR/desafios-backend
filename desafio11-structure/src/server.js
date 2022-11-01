@@ -58,7 +58,6 @@ passport.use(new TwitterStrategy({
     consumerSecret: config.TWITTER_CONSUMER_SECRET,
     callbackURL: '/auth/twitter/callback'
 }, (token, tokenSecret, userProfile, done) => {
-    console.log(userProfile)
     return done(null, userProfile)
 }));
     // Local
@@ -115,17 +114,12 @@ passport.use('login', new LocalStrategy(
 passport.serializeUser((user, callback)=> {
     callback(null, user);
 });
-passport.deserializeUser((object, callback)=> {
-    callback(null, object);
+passport.deserializeUser((user, callback)=> {
+    if(user._id){
+        User.findById(user._id, callback)
+    }
+    else{callback(null, user)}
 });
-
-// Local passport
-//passport.serializeUser((user, done) => {
-//    done(null, user._id);
-//});
-//passport.deserializeUser((id, done) => {
-//    User.findById(id, done);
-//});
 // -------------------------------------------------------------------
 // App settings
 
@@ -169,6 +163,12 @@ app.get('/failsignup', getFailedSignUp)
 app.get('/logout', getLogOut)
     //Home
 app.get('/home', getHome)
+    // Twitter connection
+app.get('/auth/twitter', passport.authenticate('twitter'))
+app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+    successRedirect: '/',
+    failureRedirect: '/faillogin'
+}))
 // -------------------------------------------------------------------
 // Socket.io connection
 io.on('connection', async socket => {

@@ -49,7 +49,7 @@ export function getFailedSignUp(req, res) {
 
 
 export function getLogOut(req, res, next) {
-    const name = req.session.name;
+    const name = req.user.username;
     req.logout((err) => {
         if (err) { return next(err); }
         req.session.destroy((error) => {
