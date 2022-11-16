@@ -1,13 +1,4 @@
-import config from "./config/config.js";
-import mongoose from "mongoose";
-
-try {
-    await mongoose.connect(config.mongodb.connection, config.mongodb.options)
-    console.log('Mongodb Atlas connected.')
-} catch (error) {
-    console.log('Not connected to Mongodb Atlas.')
-    console.log(error)
-}
+import mongoose from "mongoose"
 
 export default class MongoContainer{
     constructor(collectionName, schema){
