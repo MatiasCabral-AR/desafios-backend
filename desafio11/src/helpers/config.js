@@ -1,13 +1,13 @@
 const EXP_TIME = 200000 ;
-const DATABASE_URL = 'mongodb+srv://admin:D4Z3hFdGnvWTasOm@techwearclubar.xtw4azf.mongodb.net/sessions?retryWrites=true&w=majority';
+const DATABASE_URL = '';
 const MONGO = {
-    connection: "mongodb+srv://admin:D4Z3hFdGnvWTasOm@techwearclubar.xtw4azf.mongodb.net/sessions?retryWrites=true&w=majority",
+    connection: "",
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }
 }
-const TWITTER_CONSUMER_KEY = "YlwUZOXrEdjO6LMMCKsjZrb1a"
-const TWITTER_CONSUMER_SECRET = "bGO8CcdmWhedmICKZR9zdDnSXCOdF3A7bVKZhcSKyTAkHhweT4"
+const TWITTER_CONSUMER_KEY = ""
+const TWITTER_CONSUMER_SECRET = ""
 
 export default {EXP_TIME, DATABASE_URL, MONGO, TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET}
