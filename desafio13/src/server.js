@@ -25,13 +25,12 @@ import {getLogIn, getLogOut, getFailedLogIn, getSignUp, getFailedSignUp, getHome
 // Import Helpers
 import { createHash, isValidPassword } from './helpers/functions.js';
 import config from "./helpers/config.js";
-// Import fork
+// Import fork and OS
 import { fork } from "child_process";
 // -------------------------------------------------------------------
 // Mongoose connect
 try {
     mongoose.connect(config.MONGO.connection, config.MONGO.options)
-    console.log('Mongodb Atlas connected.')
 } catch (error) {
     console.log('Not connected to Mongodb Atlas.')
     console.log(error)
@@ -50,7 +49,7 @@ const hbs = handlebars.create({
 })
 // -------------------------------------------------------------------
 // Socket.io and Http settings
-const httpServer = new HttpServer(app)
+export const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 // -------------------------------------------------------------------
 // Passport Sign-up, Log-in and Twitter verification
@@ -208,11 +207,3 @@ io.on('connection', async socket => {
         io.sockets.emit('update_messages', messages)
     })
 })
-// -------------------------------------------------------------------
-// Server connection to port
-const connectedServer = httpServer.listen(config.PORT, () => {
-    console.log(`Server running on port : ${config.PORT}`)
-});
-connectedServer.on(
-    'error', error => console.log(`Error en el servidor : ${error}`)
-)

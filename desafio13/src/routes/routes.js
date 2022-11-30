@@ -1,3 +1,4 @@
+import { cpus } from "os";
 
 export function getHome(req, res) {
     const user = req.user
@@ -67,6 +68,7 @@ export function getInfo(req, res) {
         rss : process.memoryUsage().rss,
         execution_path : process.execPath,
         PID : process.pid,
-        proyect_folder : process.cwd()
+        proyect_folder : process.cwd(),
+        cpus : cpus().length
     })
 }

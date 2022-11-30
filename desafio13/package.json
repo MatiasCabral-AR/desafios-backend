@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node src/server.js --port 8080"
+    "fork" : "node main.js --port 8080 --modo fork",
+    "cluster" : "node main.js --port 8080 --modo cluster"
   },
   "keywords": [],
   "author": "",
